@@ -70,7 +70,7 @@ it("showing error on input except name, phone, position", () => {
   cy.get('a[href*="/helpdesk"]').click().wait(1000);
   cy.get("input[id=name]").type("a");
   cy.get("input[id=phone]").type("b");
-  cy.get("select[id=position]").select(position[0]);
+  cy.get("select[id=position]").select(position[0].label);
   cy.get("button").contains("Submit Now").click();
   cy.get("input[id=email]").should("have.class", "border-red-500");
   cy.get("select[id=issue]").should("have.class", "border-red-500");
@@ -82,7 +82,7 @@ it("showing error on input issue and message", () => {
   cy.get('a[href*="/helpdesk"]').click().wait(1000);
   cy.get("input[id=name]").type("a");
   cy.get("input[id=phone]").type("b");
-  cy.get("select[id=position]").select(position[0]);
+  cy.get("select[id=position]").select(position[0].label);
   cy.get("input[id=email]").type("a@b.com");
   cy.get("button").contains("Submit Now").click();
   cy.get("select[id=issue]").should("have.class", "border-red-500");
@@ -94,9 +94,9 @@ it("showing error on input message", () => {
   cy.get('a[href*="/helpdesk"]').click().wait(1000);
   cy.get("input[id=name]").type("a");
   cy.get("input[id=phone]").type("b");
-  cy.get("select[id=position]").select(position[0]);
+  cy.get("select[id=position]").select(position[0].label);
   cy.get("input[id=email]").type("a@b.com");
-  cy.get("select[id=issue]").select(issue[0]);
+  cy.get("select[id=issue]").select(issue[0].label);
   cy.get("button").contains("Submit Now").click();
   cy.get("textarea[id=message]").should("have.class", "border-red-500");
 });
@@ -111,6 +111,7 @@ it("no error showing on input, success popup show", () => {
   while (p < position.length) {
     cy.get("select[id=position]")
       .select(position[p].label)
+      .get("select[id=position]")
       .should("have.value", position[p].value);
     p++;
   }
@@ -121,6 +122,7 @@ it("no error showing on input, success popup show", () => {
   while (i < issue.length) {
     cy.get("select[id=issue]")
       .select(issue[i].label)
+      .get("select[id=issue]")
       .should("have.value", issue[i].value);
     i++;
   }

@@ -42,7 +42,7 @@ it("select date options from up to buttom", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
   dateList.forEach((item) => {
     cy.get(".css-1utx3b-control").click();
-    cy.get(".css-1nmdiq5-menu").contains(item).click().wait(3000);
+    cy.get(".css-1nmdiq5-menu").contains(item).click().wait(1500);
   });
 });
 
@@ -52,7 +52,7 @@ it("random select date options from bottom to top", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
   while (times > dateList.length - 1) {
     cy.get(".css-1utx3b-control").click();
-    cy.get(".css-1nmdiq5-menu").contains(dateList[times]).click().wait(3000);
+    cy.get(".css-1nmdiq5-menu").contains(dateList[times]).click().wait(1500);
     times--;
   }
 });
@@ -64,7 +64,7 @@ it("random select date options from top to buttom", () => {
   while (times < dateList.length - 1) {
     const index = Math.floor(Math.random() * 10) + 1;
     cy.get(".css-1utx3b-control").click();
-    cy.get(".css-1nmdiq5-menu").contains(dateList[index]).click().wait(3000);
+    cy.get(".css-1nmdiq5-menu").contains(dateList[index]).click().wait(1500);
     times++;
   }
 });

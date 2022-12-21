@@ -3,15 +3,9 @@ Cypress.Commands.add("open", (url) => {
 });
 
 Cypress.Commands.add("login", (email, password) => {
-  cy.visit("/")
-    .get("input[name=email]")
-    .type(email)
-    .get("input[name=password]")
-    .type(password)
-    .get("button")
-    .contains("Login")
-    .should("be.visible")
-    .click();
+  cy.visit("/").get("input[name=email]").type(email);
+  cy.get("input[name=password]").type(password);
+  cy.get("button").contains("Login").should("be.visible").click();
   cy.getCookies("_octopus_access_token").should("exist");
 });
 
