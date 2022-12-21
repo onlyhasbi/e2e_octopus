@@ -31,7 +31,7 @@ Cypress.Commands.add("login", (email, password) => {
 
 it("showing error on input when no data fill in form", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/helpdesk']").click().wait(1000);
+  cy.get('a[href*="/helpdesk"]').click().wait(1000);
   cy.get("button").contains("Submit Now").click();
   cy.get("input[id=name]").should("have.class", "border-red-500");
   cy.get("input[id=phone]").should("have.class", "border-red-500");
@@ -43,7 +43,7 @@ it("showing error on input when no data fill in form", () => {
 
 it("showing error on input except name", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/helpdesk']").click().wait(1000);
+  cy.get('a[href*="/helpdesk"]').click().wait(1000);
   cy.get("input[id=name]").type("a");
   cy.get("button").contains("Submit Now").click();
   cy.get("input[id=phone]").should("have.class", "border-red-500");
@@ -55,7 +55,7 @@ it("showing error on input except name", () => {
 
 it("showing error on input except name and phone", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/helpdesk']").click().wait(1000);
+  cy.get('a[href*="/helpdesk"]').click().wait(1000);
   cy.get("input[id=name]").type("a");
   cy.get("input[id=phone]").type("a");
   cy.get("button").contains("Submit Now").click();
@@ -67,7 +67,7 @@ it("showing error on input except name and phone", () => {
 
 it("showing error on input except name, phone, position", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/helpdesk']").click().wait(1000);
+  cy.get('a[href*="/helpdesk"]').click().wait(1000);
   cy.get("input[id=name]").type("a");
   cy.get("input[id=phone]").type("b");
   cy.get("select[id=position]").select(position[0]);
@@ -79,7 +79,7 @@ it("showing error on input except name, phone, position", () => {
 
 it("showing error on input issue and message", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/helpdesk']").click().wait(1000);
+  cy.get('a[href*="/helpdesk"]').click().wait(1000);
   cy.get("input[id=name]").type("a");
   cy.get("input[id=phone]").type("b");
   cy.get("select[id=position]").select(position[0]);
@@ -91,7 +91,7 @@ it("showing error on input issue and message", () => {
 
 it("showing error on input message", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/helpdesk']").click().wait(1000);
+  cy.get('a[href*="/helpdesk"]').click().wait(1000);
   cy.get("input[id=name]").type("a");
   cy.get("input[id=phone]").type("b");
   cy.get("select[id=position]").select(position[0]);
@@ -103,7 +103,7 @@ it("showing error on input message", () => {
 
 it("no error showing on input, success popup show", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/helpdesk']").click().wait(1000);
+  cy.get('a[href*="/helpdesk"]').click().wait(1000);
   cy.get("input[id=name]").type("a");
   cy.get("input[id=phone]").type("b");
 

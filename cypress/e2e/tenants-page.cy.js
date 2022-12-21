@@ -40,7 +40,7 @@ Cypress.Commands.add("login", (email, password) => {
 // from top to bottom select
 it("select date options from top to buttom", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/tenants']").click().wait(1000);
+  cy.get('a[href*="/tenants"]').click().wait(1000);
 
   dateList.forEach((item) => {
     cy.get(".css-1utx3b-control")
@@ -58,7 +58,7 @@ it("select date options from top to buttom", () => {
 it("random select date options from top to buttom", () => {
   let times = 10;
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/tenants']").click().wait(1000);
+  cy.get('a[href*="/tenants"]').click().wait(1000);
 
   while (times > dateList.length - 1) {
     cy.get(".css-1utx3b-control").click();
@@ -74,7 +74,7 @@ it("random select date options from top to buttom", () => {
 it("random select date options from top to buttom", () => {
   let times = 0;
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/tenants']").click().wait(1000);
+  cy.get('a[href*="/tenants"]').click().wait(1000);
 
   while (times < dateList.length - 1) {
     const index = Math.floor(Math.random() * 10) + 1;
@@ -92,14 +92,14 @@ it("random select date options from top to buttom", () => {
 
 it("show date options", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/tenants']").click().wait(1000);
+  cy.get('a[href*="/tenants"]').click().wait(1000);
   cy.get(".css-1utx3b-control").click();
   cy.get(".css-1nmdiq5-menu").should("contain", "Today");
 });
 
 it("show detail waste", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/tenants']").click().wait(1000);
+  cy.get('a[href*="/tenants"]').click().wait(1000);
 
   cy.get("td > div").contains("24.90").click();
   cy.get("h5").should("contain", "Detail Waste");
@@ -107,7 +107,7 @@ it("show detail waste", () => {
 
 it("show result search by name", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/tenants']").click().wait(1000);
+  cy.get('a[href*="/tenants"]').click().wait(1000);
 
   cy.get("input[id=search]").type("name{enter}");
   cy.get("p").should("contain", "tenant name");
@@ -115,7 +115,7 @@ it("show result search by name", () => {
 
 it("not showing any result of search", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/tenants']").click().wait(1000);
+  cy.get('a[href*="/tenants"]').click().wait(1000);
 
   cy.get("input[id=search]").type("asdasdd{enter}");
   cy.get("p").should("contain", "No data found");
@@ -123,7 +123,7 @@ it("not showing any result of search", () => {
 
 it("return original data after clear search", () => {
   cy.login(Cypress.env("email"), Cypress.env("pass"));
-  cy.get("a[href='/tenants']").click().wait(1000);
+  cy.get('a[href*="/tenants"]').click().wait(1000);
 
   cy.get("input[id=search]").type("asdasdd{enter}").wait(1500);
   cy.get("p").should("contain", "No data found").wait(3000);

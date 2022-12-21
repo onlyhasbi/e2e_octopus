@@ -41,7 +41,7 @@ it("show contact us modal", () => {
 
 it("show helpdesk modal", () => {
   cy.open("/");
-  cy.get("a[href='https://wa.me/628118880936']")
+  cy.get('a[href*="https://wa.me/628118880936"]')
     .should("contain", "Ask our Helpdesk")
     .click();
 });
