@@ -38,21 +38,21 @@ Cypress.Commands.add("login", (email, password) => {
 });
 
 // from top to bottom select
-// it("select date options from top to buttom", () => {
-//   cy.login(Cypress.env("email"), Cypress.env("pass"));
-//   cy.get("a[href='/tenants']").click().wait(1000);
+it("select date options from top to buttom", () => {
+  cy.login(Cypress.env("email"), Cypress.env("pass"));
+  cy.get("a[href='/tenants']").click().wait(1000);
 
-//   dateList.forEach((item) => {
-//     cy.get(".css-1utx3b-control")
-//       .click()
-//       .get(".css-1nmdiq5-menu")
-//       .contains(item)
-//       .click()
-//       .get(".css-1dimb5e-singleValue")
-//       .should("contain", item)
-//       .wait(1500);
-//   });
-// });
+  dateList.forEach((item) => {
+    cy.get(".css-1utx3b-control")
+      .click()
+      .get(".css-1nmdiq5-menu")
+      .contains(item)
+      .click()
+      .get(".css-1dimb5e-singleValue")
+      .should("contain", item)
+      .wait(1500);
+  });
+});
 
 // from bottom to top select
 it("random select date options from top to buttom", () => {
